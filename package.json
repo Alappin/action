@@ -45,12 +45,14 @@
     "test:intranetToken": "node ./src/server/utils/getIntranetToken.babel.js",
     "test:e2e-deps": "node ./e2e/scripts/ensureDrivers.babel.js",
     "test:e2e": "node ./e2e/scripts/runTests.babel.js",
-    "lint": "yarn flow && eslint 'src/**/*.js' 'webpack/*.js'",
-    "lint:fix": "eslint --fix 'src/**/*.js' 'webpack/*.js' ",
+    "lint": "yarn flow && eslint 'src/**/*.js' 'webpack/*.js' '.storybook/*.js' 'stories/**/*.js'",
+    "lint:fix": "eslint --fix 'src/**/*.js' 'webpack/*.js' '.storybook/*.js' 'stories/**/*.js'",
     "profile": "NODE_ENV=development webpack --config ./webpack/dev.babel.js --profile --json > stats.json",
     "relay": "npm run update-schema && relay-compiler --src ./src --schema build/schema.graphql --watch",
     "update-schema": "node ./src/server/utils/updateSchema.babel.js",
-    "postversion": "git push --follow-tags"
+    "postversion": "git push --follow-tags",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "pre-commit": [],
   "devDependencies": {
@@ -117,7 +119,11 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.5.4",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-hot-middleware": "^2.18.2"
+    "webpack-hot-middleware": "^2.18.2",
+    "@storybook/react": "^3.3.14",
+    "@storybook/addon-actions": "^3.3.14",
+    "@storybook/addon-links": "^3.3.14",
+    "@storybook/addons": "^3.3.14"
   },
   "dependencies": {
     "@segment/snippet": "^4.0.1",
